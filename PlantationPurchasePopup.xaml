@@ -1,0 +1,30 @@
+﻿<Window x:Class="MyCafe.PlantationPurchasePopup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:MyCafe"
+        mc:Ignorable="d"
+        Title="PlantationPurchase" Height="300" Width="300">
+    <StackPanel>
+        <TextBlock>Choose the country:</TextBlock>
+        <ComboBox x:Name="CountryComboBox" HorizontalContentAlignment="Center" Height="Auto" Width="Auto" VerticalAlignment="Top">
+            <ComboBoxItem IsSelected="True" Content="Ecuador" />
+            <ComboBoxItem Content="Chile" />
+            <ComboBoxItem Content="Peru" />
+            <ComboBoxItem Content="Colombia" />
+            <ComboBoxItem Content="Panama" />
+        </ComboBox>
+        <TextBlock Margin="0 15 0 0">Choose the manager name:</TextBlock>
+        <TextBox x:Name="ManagerTextBox"></TextBox>
+        <TextBlock Margin="0 15 0 0">Choose the port name:</TextBlock>
+        <ComboBox x:Name="PortComboBox" HorizontalContentAlignment="Center" Height="Auto" Width="Auto" VerticalAlignment="Top">
+            <ComboBoxItem IsSelected="True" Content="Balboa" />
+            <ComboBoxItem Content="Manzanillo" />
+            <ComboBoxItem Content="Santos" />
+            <ComboBoxItem Content="Cartagena" />
+            <ComboBoxItem Content="Colon" />
+        </ComboBox>
+        <Button Margin="0 15 0 0" Content="Buy" Click="ButtonBuyAccept_OnClick"></Button>
+    </StackPanel>
+</Window>
