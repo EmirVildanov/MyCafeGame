@@ -51,6 +51,7 @@ namespace MyCafe
             BuyerOffersList.ItemsSource = _buyerOffers;
 
             Task.Run(() => StartOfferingBuyers());
+            Task.Run(() => StartMoneyEvents());
         }
 
         private void StartOfferingBuyers()
@@ -60,6 +61,36 @@ namespace MyCafe
                 var currentTimeSleepInterval = _random.Next(5, 10);
                 Thread.Sleep(currentTimeSleepInterval * 1000);
                 GetNewOffer();
+            }
+        }
+
+        private void StartMoneyEvents()
+        {
+            while (true)
+            {
+                var currentTimeSleepInterval = _random.Next(10, 15);
+                Thread.Sleep(currentTimeSleepInterval * 1000);
+                PayFee();
+            }
+        }
+
+        private void PayFee()
+        {
+            if (Thread.CurrentThread != Dispatcher.Thread)
+            {
+                Dispatcher.Invoke(
+                    DispatcherPriority.Normal, (ThreadStart) PayFee);
+            }
+            else
+            {
+                Money -= (int) (Money * Constants.BusinessFeePercent);
+                if (Money <= 0)
+                {
+                    var GameOverPopup = new GameOverPopup();
+                    ShowPopupOnTheCenterOfTheScreen(GameOverPopup);
+                    Close();
+                }
+                MoneyTextBlock.Text = $"Your money: ${Money}k dollars";   
             }
         }
 

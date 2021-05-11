@@ -28,8 +28,6 @@ CREATE TABLE IF NOT EXISTS port_to_port_delivery
     date                     DATE NOT NULL
     );
 
-DROP TABLE port_to_port_delivery;
-
 CREATE TABLE IF NOT EXISTS american_port
 (
     american_port_name VARCHAR(100) UNIQUE
